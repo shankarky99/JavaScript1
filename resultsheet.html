@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>RESULT SHEET</title>
+    <script type="text/javascript">
+      var nm,gen,co,m,s,c,e,h,tm,per,gr,gender,roll
+      function getResult()
+      {
+        roll=document.getElementById('roll').value
+        nm=document.getElementById('name').value
+        gen=document.getElementsByName('gender')
+        for (var i = 0; i < gen.length; i++) {
+          if (gen[i].checked) {
+
+            gender=gen[i].value
+          }
+        }
+        co=document.getElementById('course')
+        cour=co.options[co.selectedIndex].value
+        m=parseInt(document.getElementById('sub1').value)
+        s=parseInt(document.getElementById('sub2').value)
+        c=parseInt(document.getElementById('sub3').value)
+        e=parseInt(document.getElementById('sub4').value)
+        h=parseInt(document.getElementById('sub5').value)
+        tm=m+s+c+e+h
+        per=tm/5
+        if (per>=90) {
+          gr='A+'
+        }
+        else if (per>=75) {
+          gr='A'
+        }
+        else if (per>=60) {
+          gr='B+'
+        }
+        else if (per>=45) {
+          gr='B'
+        }
+        else if (per>=30) {
+          gr='C'
+        }
+        else {
+          gr='D'
+        }
+        document.getElementById('tmarks').value=tm
+        document.getElementById('per').value=per
+        document.getElementById('grade').value=gr
+
+      }
+      function getData()
+      {
+        document.getElementById('text').value=roll+"\n"+nm+"\n"+gender +"\n"+tm +"\n"+per +"\n"+gr
+      }
+    </script>
+  </head>
+  <body>
+    <center>
+    <table>
+      <tr>
+        <td>Roll no</td>   <td> <input type="text" id="roll"></input></td>
+      </tr>
+      <tr>
+        <td>Name </td> <td><input type="text" id="name" name="" value=""></td>
+      </tr>
+      <tr>
+        <td>Gender</td> <td><input type="radio" name="gender" value="Male">Male <input type="radio" name="gender" value="Female">Female</td>
+        </tr>
+      <tr><td>
+        <label for="">Course</label></td>
+        <td>
+        <select class="courses" id="course" name="">
+            <option value=""> </option>
+            <option value="BCA">BCA</option>
+            <option value="MCA">MCA</option>
+            <option value="BBA">BBA</option>
+            <option value="MBA">MBA</option>
+            <option value="B.TECH">B.TECH</option>
+            <option value="M.TECH">M.TECH</option>
+          </select>
+          </td>
+      </tr>
+    </table>
+    <table>
+      Subject Marks
+      <tr><td>Subject1</td><td><input type="text" id="sub1"name="" value=""></td></tr>
+      <tr><td>Subject2</td><td><input type="text" id="sub2" name="" value=""></td></tr>
+      <tr><td>Subject3</td><td><input type="text" id="sub3" name="" value=""></td></tr>
+      <tr><td>Subject4</td><td><input type="text" id="sub4" name="" value=""></td></tr>
+      <tr><td>Subject5</td><td><input type="text" id="sub5"name="" value=""></td></tr>
+    </table>
+    <button onclick="getResult()" type="" name="button">GET RESULT</button><br><br>
+    Total Marks <input type="text" id="tmarks" name="" value=""><br><br>
+    Percentage  <input type="text" id="per" name="" value=""><br><br>
+    Grade       <input type="text" id="grade" name="" value=""><br><br>
+     <button onclick="getData()" type="button" name="button">Summit</button><br><br>
+     <textarea name="name" id="text"rows="8" cols="80"></textarea>
+   </center>
+  </body>
+</html>
